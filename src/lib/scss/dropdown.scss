@@ -1,0 +1,136 @@
+label.dropdown {
+    display: grid;
+
+    --border-radius: 8px;
+
+    p {
+        font-size: .75rem;
+        margin: .25rem;
+    }
+
+    &.open {
+        button.select i {
+            transform: rotate(180deg);
+        }
+    }
+
+    span.default {
+        pointer-events: none;
+    }
+
+    &.multi button.select span.values {
+        display: flex;
+        flex-wrap: wrap;
+
+        gap: .25rem;
+        
+        span {
+            padding: .125rem .25rem;
+
+            background-color: var(--accent-1);
+            color: var(--light-surface);
+
+            display: inline-flex;
+            align-items: center;
+
+            gap: .25rem;
+            border-radius: calc(var(--border-radius) / 2);
+
+            button, button i {
+                background: transparent;
+                color: inherit;
+                border: none;
+                font-size: .75rem;
+            }
+        }
+    }
+
+}
+
+button.select {
+    background-color: var(--light-surface);
+    border: 1px solid var(--accent-1);
+    border-radius: var(--border-radius);
+
+    padding: .5rem 1rem;
+
+    display: flex;    
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: inherit;
+    
+    span.default, i {
+        font-family: var(--font-default);
+        color: var(--disabled-fill);
+
+        transition: transform 500ms cubic-bezier(0.33, 1, 0.68, 1);
+    }
+}
+
+ul.options {
+    display: grid;
+    padding-inline: 1rem;
+
+    margin-inline: .25rem;
+
+    border: 1px solid var(--secondary);
+    border-top: none;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+
+    max-height: 16rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    button {
+        font: inherit;
+        color: var(--dark-surface);
+
+        background-color: transparent;
+        outline: none;
+        border: none;
+
+        text-align: left;
+        padding: .5rem 1rem;
+
+        &:disabled {
+            color: var(--disabled-fill);
+        }
+
+        &:not(:disabled):hover {
+            background-color: var(--secondary);
+        }
+    }
+}
+
+.search {
+    display: flex;
+    align-items: center;
+
+    position: sticky;
+    top: 0;
+
+    gap: 1rem;
+    border-bottom: 1px solid var(--secondary);
+
+    padding: .5rem;
+    margin-bottom: .5rem;
+
+    background-color: var(--light-surface);
+
+    input {
+        background-color: transparent;
+        border: none;
+        flex-grow: 1;
+
+        min-width: 0;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    input::placeholder, i {
+        color: var(--secondary);
+    }
+}

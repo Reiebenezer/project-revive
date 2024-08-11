@@ -1,0 +1,23 @@
+:root {
+    --light-surface: hsl(0, 0%, 100%);
+    --dark-surface: hsl(23, 17%, 36%);
+
+    --secondary: hsl(70, 47%, 81%);
+
+    --accent-1: hsl(76, 37%, 61%);
+    --accent-2: hsl(26, 28%, 53%);
+
+    --disabled-fill: hsl(50, 19%, 79%);
+    --disabled-outline: hsl(50, 9%, 61%);
+
+    --error: hsl(359, 62%, 51%);
+
+    --font-heading: 'Concert One', system-ui, sans-serif;
+    --font-default: 'Source Serif Pro', system-ui, sans-serif;
+
+    --shadow-light: box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.20);
+    --shadow-dark : box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+    font-family: var(--font-default);
+    background-color: var(--light-surface);
+}
