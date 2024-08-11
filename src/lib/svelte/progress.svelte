@@ -89,7 +89,7 @@
             background-color: var(--accent-1);
             color: var(--light-surface);
 
-            animation: animate 500ms;
+            animation: animate 350ms;
         }
 
         p.text {

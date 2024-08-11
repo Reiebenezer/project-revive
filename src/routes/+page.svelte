@@ -21,9 +21,7 @@
 </section>
 
 <section id="about">
-    <div class="container">
-        <img src="{asset}" alt="" />
-    
+    <div class="container">    
         <div class="content">
             <h2>What is <span class="green">#ProjectRevive</span>?</h2>
             <p>
@@ -37,6 +35,7 @@
     
             <a href="/about" class="button secondary">Learn More</a>
         </div>
+        <img src="{asset}" alt="" />
     </div>
 </section>
 
@@ -93,7 +92,7 @@
             isolation: isolate;
 
             @media screen and (width < 768px) {
-                padding: 48px 32px;
+                padding: 48px 24px;
                 flex-direction: column;
 
                 gap: 1.5rem;
@@ -138,8 +137,24 @@
         display: grid;
         gap: 1rem;
 
+        justify-items: start;        
+    }
+
+    #us .container {
+        grid-template-columns: 1fr 2fr;
+    }
+    
+    #about .container, #us .container {
+        grid-template-columns: 2fr 1fr;
+        align-items: center;
+        justify-content: start;
+
         @media screen and (width < 768px) {
-            justify-items: start;
+            grid-template-columns: auto;
+
+            img {
+                display: none;
+            }
         }
     }
 

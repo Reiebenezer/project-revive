@@ -91,6 +91,10 @@ input {
 @include font-size(h2, 2.5rem);
 @include font-size(h3, 2rem);
 
+@media screen and (width < 768px) {
+    @include font-size(h1, 3.5rem)
+}
+
 a {
     text-decoration: none;
     color: inherit;
