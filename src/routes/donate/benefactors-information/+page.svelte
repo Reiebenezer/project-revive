@@ -81,8 +81,9 @@
         grid-template-columns: 5fr 1fr 4fr;
         gap: 0.75rem;
 
-        width: 72ch;
+        max-width: 72ch;
 
+        
         [placeholder='Last Name'] {
             grid-column-end: span 2;
         }
@@ -94,5 +95,13 @@
         [placeholder='Email'] {
             grid-column-end: span 2;
         }
+    }
+
+    input {
+        width: 100%;
+    }
+
+    h2 {
+        max-width: 100%;
     }
 </style>

@@ -10,7 +10,7 @@ export function get<T>(key: string, fallback: T): Writable<T> {
 
 export function submit() {
     // placeholder
-    
+    localStorage.clear();
 }
 
 export function updateSession() {

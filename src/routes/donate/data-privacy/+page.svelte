@@ -21,7 +21,7 @@
 </p>
 <Checkbox bind:checked="{$checked}" label="I agree to contribute to this project" />
 <button
-    disabled="{!checked}"
+    disabled="{!$checked}"
     on:click="{() => goto('/donate/benefactors-information')}">Next</button>
 
 <style>

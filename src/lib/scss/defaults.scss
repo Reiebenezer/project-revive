@@ -6,6 +6,9 @@
 
 html, body {
     min-height: 100vh;
+    line-height: 1.5;
+    
+    position: relative;
 }
 
 select, textarea, input, button {
@@ -18,9 +21,16 @@ select, textarea, input, button {
 h1, h2, h3, h4, h5, h6, button {
     font-family: var(--font-heading);
     font-weight: 400;
+
+    line-height: 1.1;
 }
 
-button {
+button, a.button {
+    display: inline-flex;
+    place-items: center;
+
+    font: 400 1rem var(--font-heading);
+
     background-color: var(--accent-1);
     color: var(--light-surface);
     
@@ -91,6 +101,10 @@ a {
     color: var(--disabled-outline);
 
     cursor: not-allowed;
+}
+
+img {
+    max-width: 100%;
 }
 
 // CLASS DECLARATIONS

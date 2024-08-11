@@ -8,23 +8,38 @@
     import ReviveLogo from '$lib/img/logo.jpg';
 </script>
 
-<header class="cl-l">
-    <div class="logos">
-        <img src="{ReviveLogo}" alt="Revive Logo">
-        <img src="{RCYLogo}" alt="RCY Logo">
-    </div>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
-    </nav>
-</header>
+<div class="container">
+    <header class="cl-l">
+        <div class="logos">
+            <img src="{ReviveLogo}" alt="Revive Logo">
+            <img src="{RCYLogo}" alt="RCY Logo">
+        </div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+        </nav>
+    </header>
 
-<slot />
+    <main>
+        <slot />
+    </main>
+    
+    <footer>
+        <p>UPHSI Red Cross Youth Council &copy; 2024. All rights reserved.</p>
+    </footer>
+</div>
 
-<footer></footer>
 
 <style lang="scss">
+    .container {
+        position: absolute;
+        inset: 0;
+
+        display: flex;
+        flex-direction: column;
+    }
+
     header {
         // SPACING
         padding: 16px 96px;
@@ -53,6 +68,34 @@
 
             object-fit: cover;
             border-radius: 100vw;
+        }
+        
+        @media screen and (width < 768px) {
+            padding: 16px 32px;
+            flex-direction: column;
+
+            gap: 1rem;
+        }
+    }
+
+    main {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    footer {
+        text-align: center;
+
+        margin-inline: 96px;
+        padding-block: 72px;
+        
+        font-size: .75rem;
+        border-top: 1px solid var(--secondary);
+        
+        @media screen and (width < 768px) {
+            margin-inline: 16px;
+            padding-block: 32px;
         }
     }
 </style>

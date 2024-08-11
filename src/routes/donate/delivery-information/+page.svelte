@@ -120,7 +120,8 @@
 <style lang="scss">
     .inputs {
         gap: 1.5rem;
-        width: 80ch;
+
+        max-width: 72ch;
     }
 
     .group {
@@ -129,5 +130,13 @@
         [placeholder='Pick-Up Option'] {
             grid-column-end: span 2;
         }
+    }
+
+    input {
+        width: 100%;
+    }
+
+    h2 {
+        max-width: 100%;
     }
 </style>
