@@ -6,13 +6,13 @@
 
     $progress = 2;
 
-    const firstname = get('firstname', '');
-    const lastname = get('lastname', '');
-    const address = get('address', '');
-    const email = get('email', '');
-    const phone = get('phone', '');
-    const company = get('company', '');
-    const useCompanyName = get('use-company', $company !== '');
+    const firstname = get('First Name', '');
+    const lastname = get('Last Name', '');
+    const address = get('Address', '');
+    const email = get('Email', '');
+    const phone = get('Active Phone Number', '');
+    const company = get('Company Name', '');
+    const useCompanyName = get('As Company', $company !== '');
 
     $: pass =
         allValid(

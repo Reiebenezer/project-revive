@@ -9,14 +9,42 @@ export function get<T>(key: string, fallback: T): Writable<T> {
 }
 
 export function submit() {
+    const data = stripWritable(formdata);
+
+    debugger;
+
     // placeholder
-    localStorage.clear();
+    fetch('https://script.google.com/macros/s/AKfycbwouQOvcsZqNKeFwgd5MwzskLCcfLHZGzOVu_1kSaYrf8M5bPnDV--qxHCJ0x7hgA-IeQ/exec', { 
+        method: 'POST', 
+        body: data
+    })
+        .then(res => {
+
+            if (!res.ok) {
+                console.error('Error submitting form: ', res.statusText);
+            }
+
+            else {
+                res.json().then(v => {
+                    console.log(v);
+                    localStorage.clear();
+                })
+            }
+        })
+}
+
+function stripWritable(formdata: Record<string, Writable<any>>) {
+    const result = new FormData();
+
+    for (const key in formdata) {
+        result.set(key, storeGet(formdata[key]));
+    }
+
+    return result;
 }
 
 export function updateSession() {
-    console.log(formdata);
-    
-    const compiledData = Object.fromEntries(Object.entries(formdata).map(([ key, store ]) => [ key, storeGet(store) ]));
+    const compiledData = Object.fromEntries(Object.entries(formdata).map(([key, store]) => [key, storeGet(store)]));
     localStorage.setItem('saved-data', JSON.stringify(compiledData));
 }
 

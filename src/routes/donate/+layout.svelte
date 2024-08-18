@@ -1,7 +1,6 @@
 <script lang="ts">
     import {
         progress,
-        submit,
         fetchSession,
         updateSession,
     } from '$lib/ts/form';
@@ -26,7 +25,7 @@
 {#await mount()}
     <p>Loading form. Please wait...</p>
 {:then _}
-    <form on:change="{updateSession}" on:submit|preventDefault="{submit}">
+    <form on:change="{updateSession}" on:submit|preventDefault >
         <slot />
     </form>
 {/await}

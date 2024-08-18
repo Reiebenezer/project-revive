@@ -5,7 +5,7 @@
 
     $progress = 1;
 
-    let checked = get('privacy-checked', false);
+    let checked = get('Agreed to Contribute', false);
 </script>
 
 <h2>RA 10173: The Data Privacy Act of 2012</h2>

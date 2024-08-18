@@ -26,18 +26,18 @@
         'Old Costumes',
     ];
 
-    const selectedClothing = get('selected-clothing', [] as string[]);
-    const shippingOption = get('shipping-option', 'Drop Off');
-    const dropOffLocation = get('drop-off-location', '');
-    const pickUpOption = get('pick-up-option', '');
-    const senderName = get('sender-name', '');
-    const senderNumber = get('sender-number', '');
-    const pickUpDate = get('pick-up-date', format(new Date(), 'yyyy-MM-dd'));
-    const pickUpLocation = get('pick-up-location', '');
+    const selectedClothing = get('Clothing', [] as string[]);
+    const shippingOption = get('Delivery Method', 'Drop-Off');
+    const dropOffLocation = get('Drop Off Location', '');
+    const pickUpOption = get('Pick Up/Shipment Option', '');
+    const senderName = get('Sender Name', '');
+    const senderNumber = get('Sender Contact Number', '');
+    const pickUpDate = get('Pick Up Date', format(new Date(), 'yyyy-MM-dd'));
+    const pickUpLocation = get('Pick Up Location', '');
 
     $: pass =
         $selectedClothing.length > 0 &&
-        (($shippingOption === 'Drop Off' && $dropOffLocation !== '') ||
+        (($shippingOption === 'Drop-Off' && $dropOffLocation !== '') ||
             allValid(
                 (v) => v !== '',
                 $pickUpOption,
@@ -57,10 +57,10 @@
         label="What type of clothes will you be donating? (Please choose as many that are applicable)"
         bind:values="{$selectedClothing}" />
     <CustomRadio
-        options="{['Drop Off', 'Pick Up', 'Shipment']}"
+        options="{['Drop-Off', 'Pick-Up', 'Shipment']}"
         bind:value="{$shippingOption}" />
 
-    {#if $shippingOption === 'Drop Off'}
+    {#if $shippingOption === 'Drop-Off'}
         <input
             type="text"
             placeholder="Drop Off Location"
@@ -73,7 +73,7 @@
             <option value="Molo Plaza">Molo Plaza</option>
         </datalist>
     {:else}
-        {#if $shippingOption === 'Pick Up'}
+        {#if $shippingOption === 'Pick-Up'}
             <p class="cl-err">
                 NOTE: This option is only available for donations within Iloilo
                 City. If you reside outside Iloilo City, please choose other
@@ -84,7 +84,7 @@
         <div class="group grid col-2-1">
             <input
                 type="text"
-                placeholder="Pick-Up Option"
+                placeholder="{$shippingOption} Option"
                 bind:value="{$pickUpOption}" />
 
             <input
@@ -98,11 +98,11 @@
 
             <input
                 type="date"
-                placeholder="Pick-up Date"
+                placeholder="Date"
                 bind:value="{$pickUpDate}" />
             <input
                 type="text"
-                placeholder="Pick-up Location"
+                placeholder="Location"
                 bind:value="{$pickUpLocation}" />
         </div>
     {/if}
@@ -127,7 +127,8 @@
     .group {
         gap: 0.75rem;
 
-        [placeholder='Pick-Up Option'] {
+        [placeholder='Pick-Up Option'],
+        [placeholder='Shipment Option'] {
             grid-column-end: span 2;
         }
     }
