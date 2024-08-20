@@ -2,8 +2,8 @@
     import { goto } from '$app/navigation';
     import CustomRadio from '$lib/svelte/inputs/custom-radio.svelte';
     import MultiDropdown from '$lib/svelte/inputs/multi-dropdown.svelte';
-    import { get, progress, submit } from '$lib/ts/form';
-    import { allValid, mount } from '$lib/ts/utils';
+    import { get, progress, submit as _submit } from '$lib/ts/form';
+    import { allValid } from '$lib/ts/utils';
     import { format } from 'date-fns';
 
     $progress = 3;
@@ -46,6 +46,13 @@
                 $pickUpDate,
                 $pickUpLocation,
             ));
+
+    let submitting = false;
+
+    function submit() {
+        submitting = true;
+        _submit();
+    }
 </script>
 
 <h2>Delivery Information</h2>
@@ -112,9 +119,9 @@
     <button
         type="button"
         on:click="{() => goto('/donate/benefactors-information')}"
-        class="secondary">Previous</button>
-    <button type="button" on:click="{submit}" disabled="{!pass}"
-        >Submit Donation</button>
+        class="secondary" disabled={submitting}>Previous</button>
+    <button type="button" on:click="{submit}" disabled="{!pass || submitting}"
+        >{submitting ? "Sending data..." : "Submit Donation"}</button>
 </div>
 
 <style lang="scss">

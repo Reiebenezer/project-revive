@@ -1,6 +1,7 @@
+import { goto } from "$app/navigation";
 import { writable, type Writable, get as storeGet } from "svelte/store";
 
-const formdata: Record<string, Writable<any>> = {};
+let formdata: Record<string, Writable<any>> = {};
 
 export const progress = writable(0);
 export function get<T>(key: string, fallback: T): Writable<T> {
@@ -10,8 +11,6 @@ export function get<T>(key: string, fallback: T): Writable<T> {
 
 export function submit() {
     const data = stripWritable(formdata);
-
-    debugger;
 
     // placeholder
     fetch('https://script.google.com/macros/s/AKfycbwouQOvcsZqNKeFwgd5MwzskLCcfLHZGzOVu_1kSaYrf8M5bPnDV--qxHCJ0x7hgA-IeQ/exec', { 
@@ -26,8 +25,10 @@ export function submit() {
 
             else {
                 res.json().then(v => {
-                    console.log(v);
                     localStorage.clear();
+                    formdata = {};
+
+                    goto('/donate/complete');
                 })
             }
         })

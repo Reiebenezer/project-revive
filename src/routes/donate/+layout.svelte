@@ -1,9 +1,5 @@
 <script lang="ts">
-    import {
-        progress,
-        fetchSession,
-        updateSession,
-    } from '$lib/ts/form';
+    import { progress, fetchSession, updateSession } from '$lib/ts/form';
     import '$lib/scss/form.scss';
     import { onMount } from 'svelte';
     import { mount } from '$lib/ts/utils';
@@ -12,6 +8,11 @@
     onMount(() => {
         fetchSession();
     });
+
+    $: if ($progress !== 4)
+        onMount(() => {
+            window.onbeforeunload = (e) => e.preventDefault();
+        });
 
     const labels = [
         'RA 10173: Data Privacy Act of 2012',
@@ -25,7 +26,7 @@
 {#await mount()}
     <p>Loading form. Please wait...</p>
 {:then _}
-    <form on:change="{updateSession}" on:submit|preventDefault >
+    <form on:change="{updateSession}" on:submit|preventDefault>
         <slot />
     </form>
 {/await}
